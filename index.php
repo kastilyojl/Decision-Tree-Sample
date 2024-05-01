@@ -97,28 +97,38 @@ function predict($node, $sample) {
 
 // Sample data
 $data = array(
-    // Student's features (documents, tuition fee, grades, clearance, enrollment status [0: not eligible, 1: eligible])
+    // Student's features (documents, tuition fee, grades, clearance, course selection, enrollment status)
     
     // Kunwari 5k ang Full Payment
-    array(1, 5000, 3.0, 1, 1),
-    array(0, 5000, 2.5, 0, 0),
-    array(1, 1000, 3.5, 1, 0),
-    array(1, 5000, 2.0, 1, 0),
-    array(1, 5000, 4.0, 1, 1),
-    array(0, 2000, 1.5, 0, 0),
-    array(1, 5000, 2.5, 1, 1),
-    array(1, 5000, 3.5, 1, 0),
-    array(1, 5000, 2.0, 1, 1),
-    array(1, 3000, 4.0, 1, 0)
+    array(1, 5000, 3.0, 1, 1, 1), // 1, 3
+    array(1, 5000, 4.5, 1, 0, 1), // 2
+    array(1, 5000, 3.5, 0, 1, 0), // 4, 6
+    array(1, 5000, 4.0, 0, 0, 0), // 5
+    array(1, 5000, 2.0, 0, 1, 0), // 7, 9
+    array(1, 5000, 1.5, 0, 0, 0), // 8
+    array(1, 2000, 4.0, 0, 1, 0), // 10, 12
+    array(1, 4000, 3.5, 0, 0, 0), // 11
+    array(1, 3000, 1.0, 0, 1, 0), // 13, 15
+    array(1, 2000, 2.0, 0, 0, 0), // 14
+    array(0, 5000, 4.0, 0, 1, 0), // 16, 18
+    array(0, 5000, 4.0, 0, 0, 0), // 17
+    array(0, 5000, 1.0, 0, 1, 0), // 19, 21
+    array(0, 5000, 2.0, 0, 0, 0), // 20
+    array(0, 4000, 4.0, 0, 1, 0), // 22, 24
+    array(0, 3000, 4.0, 0, 0, 0), // 23
+    array(0, 2000, 1.5, 0, 1, 0), // 25, 27
+    array(0, 1000, 4.0, 0, 0, 0), // 26
 );
 
 // Build decision tree
 $decisionTree = buildDecisionTree($data, 5, 2, 0);
 
 // Sample test data
-$sampleData = array(1, 4900, 3.0, 1); // Student's features (documents, tuition fee, grades, clearance)
+$sampleData = array(0, 2000, 3.5, 0, 0); // Student's features (documents, tuition fee, grades, clearance)
 
 // Predict
 $prediction = predict($decisionTree, $sampleData);
+
 echo "Prediction: " . ($prediction ? "Eligible" : "Not Eligible") . "\n";
+
 ?>
