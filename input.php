@@ -1,3 +1,7 @@
+<?php
+    require('./index.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +75,7 @@
         <option value="0">Not Applicable</option>
     </select>
     <input type="submit" name="submit">
+
     
 </form>
     
